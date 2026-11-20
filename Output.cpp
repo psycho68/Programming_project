@@ -17,12 +17,12 @@ Output::Output()
 	UI.MenuItemWidth = 55;
 
 	UI.width = 1210; // make it divisible by NumHorizontalCells
-	UI.height = 610; 
+	UI.height = 610;
 	UI.wx = 5;
 	UI.wy = 5;
 
 	UI.CellWidth = UI.width / NumHorizontalCells;
-	UI.CellHeight = (UI.height -  UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells;
+	UI.CellHeight = (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells;
 
 	// Pen Colors of messages of status bar and players' info
 	UI.MsgColor = DARKRED;
@@ -30,7 +30,7 @@ Output::Output()
 
 	// Background Colors of toolbar and statusbar 
 	UI.ToolBarColor = WHITE;
-	UI.StatusBarColor = LIGHTGRAY; 
+	UI.StatusBarColor = LIGHTGRAY;
 
 	// Line Colors of the borders of each cell
 	UI.GridLineColor = WHITE;
@@ -54,7 +54,7 @@ Output::Output()
 	UI.PlayerColors[3] = DARKRED;
 
 	// Create the output window
-	pWind = CreateWind(UI.width + 15, UI.height, UI.wx, UI.wy); 
+	pWind = CreateWind(UI.width + 15, UI.height, UI.wx, UI.wy);
 
 	// Change the title
 	pWind->ChangeTitle("Chess Snakes & Ladders");
@@ -69,7 +69,7 @@ Output::Output()
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
 window* Output::CreateWind(int w, int h, int x, int y) const
-{ 
+{
 	// The Window Object is created inside the Ouput class
 	window* pW = new window(w, h, x, y);
 	return pW;
@@ -102,7 +102,7 @@ int Output::GetCellStartX(const CellPosition& cellPos) const
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-int Output::GetCellStartY(const CellPosition & cellPos) const
+int Output::GetCellStartY(const CellPosition& cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 	int row = cellPos.VCell();
@@ -116,22 +116,22 @@ int Output::GetCellStartY(const CellPosition & cellPos) const
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void Output::DrawCardCode(const CellPosition & cellPos, string cardCode) const
+void Output::DrawCardCode(const CellPosition& cellPos, string cardCode) const
 {
 	// Get the X and Y of the upper left corner of the cell
 	int cellStartX = GetCellStartX(cellPos);
 	int cellStartY = GetCellStartY(cellPos);
-	
+
 	// Calculate where to write the cardCode
-	int x = cellStartX + 0.5 * UI.CellWidth;    
+	int x = cellStartX + 0.5 * UI.CellWidth;
 	int y = cellStartY + 0.15 * UI.CellHeight;
 
 	// Set pen and font before drawing the string on the window
 	pWind->SetPen(UI.CellNumColor);
-	pWind->SetFont(UI.CardCodeFont, BOLD , BY_NAME, "Comic Sans MS");  
-	
+	pWind->SetFont(UI.CardCodeFont, BOLD, BY_NAME, "Comic Sans MS");
+
 	///TODO: Draw the string of cardCode in the location (x,y) - one line of code
-	
+
 
 
 }
@@ -165,7 +165,7 @@ void Output::ClearGridArea() const
 	// Draw each cell in the Grid: ( NumVerticalCells * NumberHorizontalCells )
 	for (int i = 0; i < NumVerticalCells; i++)
 	{
-		for (int j = 0; j < NumHorizontalCells; j++) 
+		for (int j = 0; j < NumHorizontalCells; j++)
 		{
 			CellPosition cellPos(i, j);
 			DrawCell(cellPos); // Initially NO Cards in the cell
@@ -239,8 +239,8 @@ void Output::CreatePlayModeToolBar() const
 
 
 	// Draw menu item one image at a time
-	for(int i=0; i < PLAY_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 }
 
@@ -252,8 +252,8 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 
 	// Set pen and font before drawing the string on the window
 	pWind->SetPen(UI.MsgColor);
-	pWind->SetFont(18, BOLD , BY_NAME, "Verdana");   
-	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.3), msg);
+	pWind->SetFont(18, BOLD, BY_NAME, "Verdana");
+	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight / 1.3), msg);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -261,29 +261,29 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 void Output::PrintPlayersInfo(string info)
 {
 	///TODO: Clear what was written on the toolbar
-
+	CreatePlayModeToolBar();
 	// Hint: call the output function that clears the play mode toolbar
 
 	// Set the pen and font before drawing the string on the window
-	pWind->SetPen(UI.PlayerInfoColor); 
-	pWind->SetFont(20, BOLD , BY_NAME, "Verdana");   
+	pWind->SetPen(UI.PlayerInfoColor);
+	pWind->SetFont(20, BOLD, BY_NAME, "Verdana");
 
-	int w=0, h=0;
+	int w = 0, h = 0;
 
 	///TODO: Calculate the Width and Height of the string if drawn using the current font 
-	
+	pWind->GetStringSize(w, h, info);
 	// Hint: (Use GetStringSize() window function on variable: info) 
 	//        to set the "w" and "h" variables with its width and height
-	
+
 
 	// Set the start X & Y coordinate of drawing the string
 	int x = UI.width - w - 20; // space 20 before the right-side of the window
-	                           // ( - w ) because x is the coordinate of the start point of the string (upper left)
+	// ( - w ) because x is the coordinate of the start point of the string (upper left)
 	int y = (UI.ToolBarHeight - h) / 2; // in the Middle of the toolbar height
 
 
 	///TODO: Draw the string "info" in the specified location (x, y)
-
+	pWind->DrawString(x, y, info);
 
 
 }
@@ -292,7 +292,7 @@ void Output::PrintPlayersInfo(string info)
 //			         			Game Drawing Functions   								//
 //======================================================================================//
 
-void Output::DrawCell(const CellPosition & cellPos, string cardCode, bool highlighted) const
+void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlighted) const
 {
 	// Get the Cell Number (from 1 to NumVerticalCells*NumHorizontalCells) and the X & Y of its upper left corner
 	int cellNum = cellPos.GetCellNum();
@@ -307,7 +307,7 @@ void Output::DrawCell(const CellPosition & cellPos, string cardCode, bool highli
 		pWind->SetPen(UI.GridLineColor, 1);
 	else
 		pWind->SetPen(UI.GridHighlightColor, 1);
-		
+
 
 	// 1.2. SetBrush() sets the cell background based on card existance and type
 
@@ -315,7 +315,7 @@ void Output::DrawCell(const CellPosition & cellPos, string cardCode, bool highli
 		pWind->SetBrush(UI.CellColor_NoCard);
 
 	///TODO: in the next line, or || the other chess card codes: "QUN", etc.
-	else if (cardCode == "KNG") 
+	else if (cardCode == "KNG")
 		; ///TODO: set brush with UI.CellColor_HasChessCard
 
 	else // means if a normal card
@@ -323,20 +323,20 @@ void Output::DrawCell(const CellPosition & cellPos, string cardCode, bool highli
 
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
-	
+
 	// Hint: Calculate the coordinates using: cellStartX, cellStartY, UI.CellWidth, UI.CellHeight
-	
+
 
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 
 	pWind->SetPen(UI.CellNumColor);
-	pWind->SetFont(UI.CellNumFont, BOLD , BY_NAME, "Verdana");   
+	pWind->SetFont(UI.CellNumFont, BOLD, BY_NAME, "Verdana");
 
-	int w=0, h=0;
+	int w = 0, h = 0;
 
 	///TODO: Get the Width and Height of the Cell Number if written using the current font 
-	
+
 	// Hint: (Use GetIntegerSize() window function on variable: cellNum) 
 	//        to set the "w" and "h" variables with its width and height
 
@@ -344,15 +344,15 @@ void Output::DrawCell(const CellPosition & cellPos, string cardCode, bool highli
 
 	// Calculate X & Y coordinate of the start point of writing the card number (upper left point of the cell num)
 	int x = cellStartX + (UI.CellWidth - w - 1);   // space 1 from the end of the cell width
-												   // ( - w ) because x is for the start point of cell num (num's left corner)
+	// ( - w ) because x is for the start point of cell num (num's left corner)
 	int y = cellStartY + (UI.CellHeight - h - 1);  // space 1 from the end of the cell height
-												   // ( - w ) because y is for the start point of cell num (num's upper corner)
-	
-	///TODO: Draw the Integer cellNum in the x and y location
+	// ( - w ) because y is for the start point of cell num (num's upper corner)
 
-	
+///TODO: Draw the Integer cellNum in the x and y location
 
-	// ----- 3- Draw card code (if any) -----
+
+
+// ----- 3- Draw card code (if any) -----
 
 	if (cardCode != "") // Note: cardCode == "" means no card
 		DrawCardCode(cellPos, cardCode);
@@ -360,7 +360,7 @@ void Output::DrawCell(const CellPosition & cellPos, string cardCode, bool highli
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playerColor) const
+void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color playerColor) const
 {
 
 	///TODO: Validate the playerNum, if not valid, return; out of the function
@@ -389,7 +389,7 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 		y += 2 * radius + 2; // because playerNum 2 and 3 are drawn in the second row of circles
 
 	// Calculate the Y coordinate of the center of the player's circle (based on playerNum)
-	int x = cellStartX + radius + 10;  													
+	int x = cellStartX + radius + 10;
 	if (playerNum == 1 || playerNum == 3)
 		x += 2 * radius + 4; // because playerNum 1 and 3 are drawn in the second column of circles
 
@@ -401,7 +401,7 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 
 
 
-	
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -411,4 +411,3 @@ Output::~Output()
 	// deallocating the window object
 	delete pWind;
 }
-
