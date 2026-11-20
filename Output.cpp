@@ -321,7 +321,7 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
 
-	pWind->DrawRectangle(cellStartX, cellStartY, UI.CellWidth, UI.CellHeight, FRAME);// Hint: Calculate the coordinates using: cellStartX, cellStartY, UI.CellWidth, UI.CellHeight
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight, FRAME);// Hint: Calculate the coordinates using: cellStartX, cellStartY, UI.CellWidth, UI.CellHeight
 
 
 
