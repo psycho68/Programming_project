@@ -197,8 +197,8 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_DELETE_CARD] = "images\\DELETE_CARD.jpg";
 	MenuItemImages[ITM_MOVE_CARD] = "images\\MOVE_CARD.jpg";
 	MenuItemImages[ITM_SHUFFLE_CARD] = "images\\SHUFFLE_CARD.jpg";
-	MenuItemImages[ITM_SAVE_GRID] = "images\\SAVE_GRID.jpg";
-	MenuItemImages[ITM_OPEN_GRID] = "images\\OPEN_GRID.jpg";
+	MenuItemImages[ITM_SAVE_GRID] = "images\\GRID_SAVE.jpg";
+	MenuItemImages[ITM_OPEN_GRID] = "images\\GRID_OPEN.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
 
