@@ -298,9 +298,8 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 	int cellNum = cellPos.GetCellNum();
 	int cellStartX = GetCellStartX(cellPos);
 	int cellStartY = GetCellStartY(cellPos);
-
 	// ----- 1- Draw the cell itself (background) --> Filled Rectangle -----
-
+	pWind->DrawRectangle(cellStartX, cellStartY, UI.CellWidth, UI.CellHeight);
 	// 1.1. SetPen() sets the cell border based on highlighted or not
 
 	if (!highlighted)
@@ -315,16 +314,15 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 		pWind->SetBrush(UI.CellColor_NoCard);
 
 	///TODO: in the next line, or || the other chess card codes: "QUN", etc.
-	else if (cardCode == "KNG")
-		; ///TODO: set brush with UI.CellColor_HasChessCard
-
+	else if (cardCode == "KNG" || cardCode == "QUN" || cardCode == "ROK" || cardCode == "NYT")
+		pWind->SetBrush(UI.CellColor_HasChessCard); ///TODO: set brush with UI.CellColor_HasChessCard
 	else // means if a normal card
-		; ///TODO: set brush with UI.CellColor_HasNormCard
+		pWind->SetBrush(UI.CellColor_HasNormCard); ///TODO: set brush with UI.CellColor_HasNormCard
 
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
 
-	// Hint: Calculate the coordinates using: cellStartX, cellStartY, UI.CellWidth, UI.CellHeight
+	pWind->DrawRectangle(cellStartX, cellStartY, UI.CellWidth, UI.CellHeight, FRAME);// Hint: Calculate the coordinates using: cellStartX, cellStartY, UI.CellWidth, UI.CellHeight
 
 
 
@@ -337,7 +335,7 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 
 	///TODO: Get the Width and Height of the Cell Number if written using the current font 
 
-	// Hint: (Use GetIntegerSize() window function on variable: cellNum) 
+	pWind->GetIntegerSize(w, h, cellNum);// Hint: (Use GetIntegerSize() window function on variable: cellNum) 
 	//        to set the "w" and "h" variables with its width and height
 
 
@@ -348,7 +346,7 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 	int y = cellStartY + (UI.CellHeight - h - 1);  // space 1 from the end of the cell height
 	// ( - w ) because y is for the start point of cell num (num's upper corner)
 
-///TODO: Draw the Integer cellNum in the x and y location
+	pWind->DrawInteger(x, y, cellNum);///TODO: Draw the Integer cellNum in the x and y location
 
 
 
