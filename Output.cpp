@@ -190,17 +190,26 @@ void Output::CreateDesignModeToolBar() const
 	// REORDEER them in UI_Info.h ==> enum DESIGN_MODE_ITEMS
 	// ** MAKE SURE THAT THE IMAGES ARE .JPG FILES **
 	string MenuItemImages[DESIGN_ITM_COUNT];
-	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";	
+	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";
+	MenuItemImages[ITM_SELECT_CARD] = "images\\SELECT_CARD.jpg";
+	MenuItemImages[ITM_COPY_CARD] = "images\\COPY_CARD.jpg";
+	MenuItemImages[ITM_PASTE_CARD] = "images\\PASTE_CARD.jpg";
+	MenuItemImages[ITM_DELETE_CARD] = "images\\DELETE_CARD.jpg";
+	MenuItemImages[ITM_MOVE_CARD] = "images\\MOVE_CARD.jpg";
+	MenuItemImages[ITM_SHUFFLE_CARD] = "images\\SHUFFLE_CARD.jpg";
+	MenuItemImages[ITM_SAVE_GRID] = "images\\SAVE_GRID.jpg";
+	MenuItemImages[ITM_OPEN_GRID] = "images\\OPEN_GRID.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
+
 
 	///TODO: Prepare images for each menu item and add it to the list
 
 
 
 	// Draw menu item one image at a time
-	for(int i=0; i < DESIGN_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+	for (int i = 0; i < DESIGN_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 
 }
