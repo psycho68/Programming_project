@@ -130,12 +130,11 @@ void Output::DrawCardCode(const CellPosition& cellPos, string cardCode) const
 	pWind->SetPen(UI.CellNumColor);
 	pWind->SetFont(UI.CardCodeFont, BOLD, BY_NAME, "Comic Sans MS");
 
-	///TODO: Draw the string of cardCode in the location (x,y) - one line of code
+	pWind->DrawString(x, y, cardCode); ///TODO: Draw the string of cardCode in the location (x,y) - one line of code
 
 
 
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::ClearToolBar() const
@@ -299,7 +298,7 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 	int cellStartX = GetCellStartX(cellPos);
 	int cellStartY = GetCellStartY(cellPos);
 	// ----- 1- Draw the cell itself (background) --> Filled Rectangle -----
-	pWind->DrawRectangle(cellStartX, cellStartY, UI.CellWidth, UI.CellHeight);
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 	// 1.1. SetPen() sets the cell border based on highlighted or not
 
 	if (!highlighted)
@@ -350,7 +349,7 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 
 
 
-// ----- 3- Draw card code (if any) -----
+	// ----- 3- Draw card code (if any) -----
 
 	if (cardCode != "") // Note: cardCode == "" means no card
 		DrawCardCode(cellPos, cardCode);
