@@ -364,6 +364,10 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 {
 
 	///TODO: Validate the playerNum, if not valid, return; out of the function
+	if (playerNum >=MaxPlayerCount || playerNum<0)
+	{
+		return;
+	}
 
 	// Hint: use the MaxPlayerCount and check the correct range of playerNum
 
@@ -396,6 +400,9 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 
 	///TODO: Draw the player Circle of "radius" in center point (x,y) 
 	//       and filled with: playerColor
+	pWind->SetPen(playerColor);
+	pWind->SetBrush(playerColor);
+	pWind->DrawCircle(x, y, radius);
 
 	// Hint: first set the pen and brush with playerColor before draw the circle (3 lines of code)
 
