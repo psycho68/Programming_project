@@ -298,7 +298,6 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 	int cellStartX = GetCellStartX(cellPos);
 	int cellStartY = GetCellStartY(cellPos);
 	// ----- 1- Draw the cell itself (background) --> Filled Rectangle -----
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 	// 1.1. SetPen() sets the cell border based on highlighted or not
 
 	if (!highlighted)
@@ -320,7 +319,7 @@ void Output::DrawCell(const CellPosition& cellPos, string cardCode, bool highlig
 
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
-
+    pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight, FRAME);// Hint: Calculate the coordinates using: cellStartX, cellStartY, UI.CellWidth, UI.CellHeight
 
 
