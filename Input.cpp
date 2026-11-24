@@ -44,7 +44,7 @@ string Input::GetString(Output *pO) const
 
 int Input::GetInteger(Output *pO) const 
 {
-	string label = GetString(p0);
+	string label = GetString(pO);
 	if (label == "") { return 0; }
 	int labelnum = stoi(label);
 	return labelnum;
