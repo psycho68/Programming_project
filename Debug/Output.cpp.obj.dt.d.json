@@ -1,12 +1,12 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\phase1_code\\output.cpp",
+        "Source": "c:\\phase1_code\\phase1_code\\output.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\phase1_code\\output.h",
-            "c:\\phase1_code\\defs.h",
-            "c:\\phase1_code\\cmugraphicslib\\cmugraphics.h",
+            "c:\\phase1_code\\phase1_code\\output.h",
+            "c:\\phase1_code\\phase1_code\\defs.h",
+            "c:\\phase1_code\\phase1_code\\cmugraphicslib\\cmugraphics.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\string",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\yvals_core.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime.h",
@@ -310,14 +310,14 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\mcx.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\imm.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\ime_cmodes.h",
-            "c:\\phase1_code\\cmugraphicslib\\mousequeue.h",
-            "c:\\phase1_code\\cmugraphicslib\\version.h",
-            "c:\\phase1_code\\cmugraphicslib\\keyqueue.h",
-            "c:\\phase1_code\\cmugraphicslib\\image.h",
-            "c:\\phase1_code\\cmugraphicslib\\colors.h",
-            "c:\\phase1_code\\ui_info.h",
-            "c:\\phase1_code\\cellposition.h",
-            "c:\\phase1_code\\input.h"
+            "c:\\phase1_code\\phase1_code\\cmugraphicslib\\mousequeue.h",
+            "c:\\phase1_code\\phase1_code\\cmugraphicslib\\version.h",
+            "c:\\phase1_code\\phase1_code\\cmugraphicslib\\keyqueue.h",
+            "c:\\phase1_code\\phase1_code\\cmugraphicslib\\image.h",
+            "c:\\phase1_code\\phase1_code\\cmugraphicslib\\colors.h",
+            "c:\\phase1_code\\phase1_code\\ui_info.h",
+            "c:\\phase1_code\\phase1_code\\cellposition.h",
+            "c:\\phase1_code\\phase1_code\\input.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -226,7 +226,7 @@ void Output::CreatePlayModeToolBar() const
 
 	// First, prepare List of images for each menu item
 	// To control the order of these images in the menu, 
-	// REORDER them in UI_Info.h ==> enum PLAY_MODE_ITEMS
+	// REORDER them in UI_ Info.h ==> enum PLAY_MODE_ITEMS
 	// ** MAKE SURE THAT THE IMAGES ARE .JPG FILES **
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_ROLL_DICE] = "images\\Menu_Dice.jpg";
